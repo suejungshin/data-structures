@@ -7,32 +7,35 @@ var Queue = function() {
 
 Queue.prototype.size = function() {
   return this.n;
-}
+};
+
 Queue.prototype.enqueue = function(name) {
   var init = 0;
-    var keysArray = Object.keys(this.storage);
-    
-    if (keysArray.length !== 0) {
+  var keysArray = Object.keys(this.storage);
 
-      init = Math.max(keysArray) + 1;
-    }
+  if (keysArray.length !== 0) {
 
-    this.storage[init] = name;
-    this.n++;
-}
+    init = Math.max(keysArray) + 1;
+  }
+
+  this.storage[init] = name;
+  this.n++;
+};
 
 Queue.prototype.dequeue = function() {
   var first = this.storage[0];
-    delete this.storage[0];
-    for (var keys in this.storage) {
-      var temp = Number(keys);
-      temp -= 1;
-      this.storage[temp] = this.storage[keys];
-      delete this.storage[keys];
-    }
-    this.n--;
-    if (this.n < 0) this.n = 0;
-    return first;
-}
+  delete this.storage[0];
+  for (var keys in this.storage) {
+    var temp = Number(keys);
+    temp -= 1;
+    this.storage[temp] = this.storage[keys];
+    delete this.storage[keys];
+  }
+  this.n--;
+  if (this.n < 0) {
+    this.n = 0;
+  }
+  return first;
+};
 
 

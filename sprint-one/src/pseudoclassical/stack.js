@@ -25,6 +25,6 @@ Stack.prototype.pop = function() {
     this.n = 0;
   }
   return popped;
-}
+};
 
 
