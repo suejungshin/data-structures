@@ -10,29 +10,29 @@ class Queue {
   }
   dequeue() {
     var first = this.storage[0];
-  delete this.storage[0];
-  for (var keys in this.storage) {
-    var temp = Number(keys);
-    temp -= 1;
-    this.storage[temp] = this.storage[keys];
-    delete this.storage[keys];
+    delete this.storage[0];
+    for (var keys in this.storage) {
+      var temp = Number(keys);
+      temp -= 1;
+      this.storage[temp] = this.storage[keys];
+      delete this.storage[keys];
+    }
+    this.n--;
+    if (this.n < 0) {
+      this.n = 0;
+    }
+    return first;
   }
-  this.n--;
-  if (this.n < 0) {
-    this.n = 0;
-  }
-  return first;
-  }
+
   enqueue(string) {
-  var init = 0;
-  var keysArray = Object.keys(this.storage);
+    var init = 0;
+    var keysArray = Object.keys(this.storage);
 
-  if (keysArray.length !== 0) {
+    if (keysArray.length !== 0) {
+      init = Math.max(keysArray) + 1;
+    }
 
-    init = Math.max(keysArray) + 1;
+    this.storage[init] = name;
+    this.n++;
   }
-
-  this.storage[init] = name;
-  this.n++;
-  };
 }
