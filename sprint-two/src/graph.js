@@ -29,15 +29,11 @@ Graph.prototype.removeNode = function(node) {
       if (this.storage[key].edge.length !== 0) {
         var inner = this.storage[key].edge;
         for (var i = 0; i < inner.length; i++) {
-//           var index = this.storage[inner[i]].edge.indexOf(node);
-          //this.removeEdge(this.storage[inner[i]].edge[index], node);
-//           var test = this.storage[inner[i]]
-          //var indexofWhatToDeleteinFromArray = this.storage[node].edge;
           var whatToDelete = this.storage[node].edge[i];
-          var nodeToDeleteFrom = this.storage[whatToDelete]
+          var nodeToDeleteFrom = this.storage[whatToDelete];
           var indexofthingToDelete = nodeToDeleteFrom.edge.indexOf(node);
           //var indexOfThingtoDelete =
-          nodeToDeleteFrom.edge.splice(indexofthingToDelete,1)
+          nodeToDeleteFrom.edge.splice(indexofthingToDelete, 1);
           //this.storage[this.storage[inner[i]].edge.splice(index, 1);
         }
       }
