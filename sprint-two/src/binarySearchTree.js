@@ -5,18 +5,22 @@ var BinarySearchTree = function (value) {
 };
 
 BinarySearchTree.prototype.insert = function (value) {
-  var tree = new BinarySearchTree(value);
-  if (this.value > value) {
-    if (this.left === null) {
-      return this.left = tree;
-    } else {
-      this.left.insert(value);
-    }
+  if (value === null) {
+    return 'input cannot be null'
   } else {
-    if (this.right === null) {
-      return this.right = tree;
+    var tree = new BinarySearchTree(value);
+    if (this.value > value) {
+      if (this.left === null) {
+        return this.left = tree;
+      } else {
+        this.left.insert(value);
+      }
     } else {
-      this.right.insert(value);
+      if (this.right === null) {
+        return this.right = tree;
+      } else {
+        this.right.insert(value);
+      }
     }
   }
 };

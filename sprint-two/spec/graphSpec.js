@@ -68,4 +68,9 @@ describe('graph', function() {
     expect(graph.hasEdge(3, 5)).to.equal(true);
     expect(graph.hasEdge(5, 5)).to.equal(true);
   });
+
+  // Added test
+  it('should not allow a node value that is not a number', function() {
+    expect(graph.addNode('hello')).to.equal('inputs must be numbers');
+  });
 });

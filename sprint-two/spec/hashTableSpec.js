@@ -47,6 +47,20 @@ describe('hashTable', function() {
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
 
+  // Our added test
+  it('should allow more than one key to have the same value', function() {
+    var v1 = 'val1';
+    var v2 = 'val2';
+    var oldHashFunction = window.getIndexBelowMaxForKey;
+    hashTable.insert(v1, v1);
+    hashTable.insert(v2, v1);
+    expect(hashTable.retrieve(v1)).to.equal(v1);
+    expect(hashTable.retrieve(v2)).to.equal(v1);
+    window.getIndexBelowMaxForKey = oldHashFunction;
+  });
+
+
+
   // (Advanced! Remove the extra "x" when you want the following tests to run)
   xit ('should double in size when needed', function() {
     _.each(people, function(person) {

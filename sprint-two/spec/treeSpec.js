@@ -41,4 +41,8 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  it('should return "input error" if try to use value null', function() {
+    expect(tree.addChild(null)).to.equal('input error');
+  });
+
 });

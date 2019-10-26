@@ -1,4 +1,4 @@
-var Set = function() {
+var Set = function () {
   var set = Object.create(setPrototype);
   set._storage = {}; // fix me
 
@@ -7,13 +7,13 @@ var Set = function() {
 
 var setPrototype = {};
 
-setPrototype.add = function(item) {
+setPrototype.add = function (item) {
   if (this._storage[item] === undefined) {
     this._storage[item] = item;
   }
 };
 
-setPrototype.contains = function(item) {
+setPrototype.contains = function (item) {
   if (this._storage.hasOwnProperty(item)) {
     return true;
   } else {
@@ -21,7 +21,7 @@ setPrototype.contains = function(item) {
   }
 };
 
-setPrototype.remove = function(item) {
+setPrototype.remove = function (item) {
   if (this.contains(item)) {
     delete this._storage[item];
   }
