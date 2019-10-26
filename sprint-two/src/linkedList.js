@@ -4,14 +4,18 @@ var LinkedList = function () {
   list.tail = null;
 
   list.addToTail = function (value) {
-    var node = Node(value);
-
-    if (this.head === null) {
-      this.head = node;
-      this.tail = this.head;
+    if (value === null) {
+      return 'input error';
     } else {
-      this.tail.next = node;
-      this.tail = node;
+      var node = Node(value);
+
+      if (this.head === null) {
+        this.head = node;
+        this.tail = this.head;
+      } else {
+        this.tail.next = node;
+        this.tail = node;
+      }
     }
   };
 
@@ -50,6 +54,7 @@ var LinkedList = function () {
   };
 
   return list;
+
 };
 
 var Node = function (value) {

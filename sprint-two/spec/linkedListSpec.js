@@ -51,5 +51,9 @@ describe('linkedList', function() {
     expect(linkedList.contains(4)).to.equal(false);
   });
 
-  // add more tests here to test the functionality of linkedList
+  //add more tests here to test the functionality of linkedList
+  it('should return "input error" if input is null', function() {
+    expect(linkedList.addToTail(null)).to.equal('input error');
+  });
+
 });
