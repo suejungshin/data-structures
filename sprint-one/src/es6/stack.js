@@ -1,32 +1,26 @@
 class Stack {
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
   // but try not not reference your old code in writing the new style.
-  constructor() {
-    this.n = 0;
+  constructor(storage) {
     this.storage = {};
   }
-
-  size() {
-    return this.n;
-  }
-
-  push(name) {
-    var init = 0;
-    var keysArr = Object.keys(this.storage);
-    if (keysArr.length !== 0) {
-      init = Math.max(keysArr) + 1;
-    }
-    this.storage[init] = name;
-    this.n++;
+  push(string) {
+    let thisLength = Object.keys(this.storage).length;
+    this.storage[thisLength] = string;
+    return this.storage;
   }
 
   pop() {
-    var popped = this.storage[this.n - 1];
-    delete this.storage[this.n - 1];
-    this.n--;
-    if (this.n < 0) {
-      this.n = 0;
-    }
-    return popped;
+    let thisPopLength = Object.keys(this.storage).length;
+    let result = this.storage[thisPopLength - 1];
+    console.log(this.storage)
+    console.log(thisPopLength)
+    delete this.storage[thisPopLength - 1];
+    return result;
   }
+
+  size() {
+    return Object.keys(this.storage).length;
+  }
+  
 }

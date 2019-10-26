@@ -1,35 +1,29 @@
-var Stack = function() {
+var Stack = function () {
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
   // but try not not reference your old code in writing the new style.
-  var obj = {};
-  obj.storage = {};
-  obj.n = 0;
-  extend(obj, stackMethods);
-
-  return obj
+  var resultObj = {}; // need to use var instead of let/const or test will fail
+  resultObj.storage = {};
+  _.extend(resultObj, stackMethods);
+  return resultObj;
 };
 
-var extend = function(obj, method) {
-  for (var keys in method) {
-    obj[keys] = method[keys];
-  }
+var stackMethods = {};
+stackMethods.push = function (string) {
+  let thisLength = Object.keys(this.storage).length;
+  this.storage[thisLength] = string;
+  return this.storage;
 }
 
-var stackMethods = {
-  push: function(name) {
-    this.storage[this.n] = name;
-    this.n++;
-  },
-  pop: function(){
-    var popped = this.storage[this.n - 1];
-    delete this.storage[this.n - 1];
-    this.n--;
-    if (this.n < 0) this.n = 0;
-    return popped;
-  },
-  size: function(){
-    return this.n;
-  }
-};
+stackMethods.pop = function () {
+  let thisPopLength = Object.keys(this.storage).length;
+  let result = this.storage[thisPopLength - 1];
+  console.log(this.storage)
+  console.log(thisPopLength)
+  delete this.storage[thisPopLength - 1];
 
+  return result;
+}
 
+stackMethods.size = function () {
+  return Object.keys(this.storage).length;
+}

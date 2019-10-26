@@ -1,49 +1,30 @@
 var Queue = function() {
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
   // but try not not reference your old code in writing the new style.
-  var obj = {};
-  obj.n = 0;
-  obj.storage = {};
+  var resultObj = {};
+  resultObj.storage = {};
+  _.extend(resultObj, queueMethods);
 
-  extend(obj, queueMethods);
-
-  return obj;
+  return resultObj;
 };
 
-var extend = function(obj, method) {
-  for (var keys in method) {
-    obj[keys] = method[keys];
-  }
-}
+var queueMethods = {};
+var storageCurrentIndex = 0;
 
-var queueMethods = {
-  enqueue: function(string) {
-    var init = 0
-    var keysArr = Object.keys(this.storage);
-    var max = Math.max(keysArr);
-    if (keysArr.length !== 0) {
-      init = max + 1;
-    }
-    this.storage[init] = string;
-    this.n++;
-
-  },
-  dequeue: function() {
-    var deleted = this.storage[0];
-    delete this.storage[0];
-    for (var keys in this.storage) {
-      var copy = Number(keys);
-      copy = copy - 1;
-      this.storage[copy] = this.storage[keys];
-      delete this.storage[keys]
-    }
-    this.n--;
-    if (this.n < 0) this.n = 0;
-    return deleted;
-  },
-  size: function(){
-    return this.n;
-  }
+queueMethods.enqueue = function(value) {
+  this.storage[storageCurrentIndex] = value;
+  storageCurrentIndex++;
+  return this.storage;
 };
 
+queueMethods.dequeue = function() {
+  let storageIndexArr = Object.keys(this.storage);
+  let minIndex = Math.min(...storageIndexArr);
+  let result = this.storage[minIndex];
+  delete this.storage[minIndex];
+  return result;
+};
 
+queueMethods.size = function() {
+  return Object.keys(this.storage).length;
+};

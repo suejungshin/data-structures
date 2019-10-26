@@ -1,38 +1,28 @@
+var storageCurrentIndex = 0;
+
 class Queue {
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
   // but try not not reference your old code in writing the new style.
+
   constructor() {
-    this.n = 0;
     this.storage = {};
   }
-  size() {
-    return this.n;
-  }
+  enqueue(value) {
+    this.storage[storageCurrentIndex] = value;
+    storageCurrentIndex++;
+    return this.storage;
+  };
+
   dequeue() {
-    var first = this.storage[0];
-    delete this.storage[0];
-    for (var keys in this.storage) {
-      var temp = Number(keys);
-      temp -= 1;
-      this.storage[temp] = this.storage[keys];
-      delete this.storage[keys];
-    }
-    this.n--;
-    if (this.n < 0) {
-      this.n = 0;
-    }
-    return first;
-  }
+    let storageIndexArr = Object.keys(this.storage);
+    let minIndex = Math.min(...storageIndexArr);
+    let result = this.storage[minIndex];
+    delete this.storage[minIndex];
+    return result;
+  };
 
-  enqueue(string) {
-    var init = 0;
-    var keysArray = Object.keys(this.storage);
+  size() {
+    return Object.keys(this.storage).length;
+  };
 
-    if (keysArray.length !== 0) {
-      init = Math.max(keysArray) + 1;
-    }
-
-    this.storage[init] = name;
-    this.n++;
-  }
 }
