@@ -4,16 +4,29 @@ var Tree = function(value) {
 
   // your code here
   newTree.children = []; // fix me
-
+  _.extend(newTree, treeMethods);
   return newTree;
 };
 
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
+  var tree = Tree(value);
+  this.children.push(tree);
 };
 
 treeMethods.contains = function(target) {
+
+  if (this.value === target) {
+    return true;
+  }
+
+  for (var i = 0; i < this.children.length; i ++) {
+    if (this.children[i].contains(target)) {
+      return true;
+    }
+  }
+  return false;
 };
 
 
@@ -21,3 +34,4 @@ treeMethods.contains = function(target) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+// the complexity for addChild is O(1) and O(n) for contains

@@ -32,9 +32,7 @@ Graph.prototype.removeNode = function(node) {
           var whatToDelete = this.storage[node].edge[i];
           var nodeToDeleteFrom = this.storage[whatToDelete];
           var indexofthingToDelete = nodeToDeleteFrom.edge.indexOf(node);
-          //var indexOfThingtoDelete =
           nodeToDeleteFrom.edge.splice(indexofthingToDelete, 1);
-          //this.storage[this.storage[inner[i]].edge.splice(index, 1);
         }
       }
       delete this.storage[key];
@@ -93,3 +91,5 @@ Graph.prototype.forEachNode = function(cb) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+
+// The time comlexity for addNode O(1), O(n) for contains, O(n^2) for removing, O(n) for forEachNode
